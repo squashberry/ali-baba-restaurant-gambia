@@ -2855,10 +2855,11 @@ function setupReservation() {
                 );
 
 
-            window.open(
-                `https://wa.me/2204224055?text=${reservationMessage}`,
-                "_blank"
-            );
+            if (window.RESTAURANT_CONFIG?.demoPreview) {
+                showToast("Concept preview only — reservations activate after owner approval.");
+                return;
+            }
+            window.open(`https://wa.me/2204224055?text=${reservationMessage}`, "_blank");
 
         }
     );
